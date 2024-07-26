@@ -564,7 +564,6 @@ class RDM(ERM):
         ## flatten the risk
         all_confs_worst_env_flat = torch.flatten(all_confs_worst_env)
         all_confs_all_envs_flat = torch.flatten(all_confs_envs)
-
     
         matching_penalty = self.mmd(all_confs_worst_env_flat.unsqueeze(1), all_confs_all_envs_flat.unsqueeze(1)) 
         
@@ -582,7 +581,6 @@ class RDM(ERM):
                 lr=self.hparams["rdm_lr"],
                 weight_decay=self.hparams['weight_decay'])
 
-        
         self.optimizer.zero_grad()
         total_loss.backward()
         self.optimizer.step()
