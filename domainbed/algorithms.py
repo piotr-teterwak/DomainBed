@@ -540,7 +540,6 @@ class RDM(ERM):
         all_logits_idx = 0
         all_confs_envs = None
 
-
         for i, (x, y) in enumerate(minibatches):
             logits = all_logits[all_logits_idx:all_logits_idx + x.shape[0]]
             all_logits_idx += x.shape[0]
