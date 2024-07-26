@@ -111,8 +111,6 @@ def print_results_tables(records, selection_method, latex):
     for r in grouped_records:
         r['records'] = merge_records(r['records'])
 
-    #grouped_records = grouped_records.filter_equals("dataset", ("PACS"))
-
     grouped_records = grouped_records.map(lambda group:
         { **group, "sweep_acc": selection_method.sweep_acc(group["records"]) }
     ).filter(lambda g: g["sweep_acc"] is not None)
@@ -213,10 +211,10 @@ if __name__ == "__main__":
         print("Total records:", len(records))
 
     SELECTION_METHODS = [
-        #model_selection.IIDAccuracySelectionMethod,
+        model_selection.IIDAccuracySelectionMethod,
         model_selection.IIDAutoLRAccuracySelectionMethod,
-        #model_selection.LeaveOneOutSelectionMethod,
-        #model_selection.OracleSelectionMethod,
+        model_selection.LeaveOneOutSelectionMethod,
+        model_selection.OracleSelectionMethod,
     ]
 
     for selection_method in SELECTION_METHODS:
