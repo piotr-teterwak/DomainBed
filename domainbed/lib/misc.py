@@ -602,7 +602,6 @@ class SupConLossLambda(torch.nn.Module):
             scaled_exp_term = torch.cat((self.lamda * torch.exp(pos_feats_in_domain[:, i]), (1 - self.lamda) * torch.exp(pos_feats_out_domain[:, i])))
             scaled_denom_const = torch.sum(torch.cat((self.lamda * torch.exp(neg_feats_in_domain[:, i]), (1 - self.lamda) * torch.exp(neg_feats_out_domain[:, i]), scaled_exp_term))) + 1e-5
 
-
             # nof positive samples
             num_positives = pos_feats_in_domain.shape[0] + pos_feats_out_domain.shape[0] # total positive samples
             log_fraction = torch.log((scaled_exp_term / scaled_denom_const) + 1e-5) # take log fraction
