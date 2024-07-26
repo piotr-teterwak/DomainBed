@@ -529,6 +529,7 @@ class RDM(ERM):
     def update(self, minibatches, unlabeled=None, held_out_minibatches=None):
         matching_penalty_weight = (self.hparams['rdm_lambda'] if self.update_count
                           >= self.hparams['rdm_penalty_anneal_iters'] else
+                          0.)
 
         variance_penalty_weight = (self.hparams['variance_weight'] if self.update_count
                           >= self.hparams['rdm_penalty_anneal_iters'] else
