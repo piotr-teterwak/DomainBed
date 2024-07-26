@@ -232,10 +232,6 @@ class ERMPlusPlus(Algorithm,ErmPlusPlusMovingAvg):
              return schedule
 
 
-
-
-
-
 class Fish(Algorithm):
     """
     Implementation of Fish, as seen in Gradient Matching for Domain
@@ -2309,8 +2305,7 @@ class ADRMX(Algorithm):
                 list(self.classifier_domain.parameters())),
             lr=self.hparams["lr"],
             betas=(self.hparams['beta1'], 0.9))
-                         
-                                   
+                                                    
     def update(self, minibatches, unlabeled=None):
 
         self.update_count += 1
