@@ -88,7 +88,6 @@ class Algorithm(torch.nn.Module):
     def predict(self, x):
         raise NotImplementedError
 
-
 class ERM(Algorithm):
     """
     Empirical Risk Minimization (ERM)
