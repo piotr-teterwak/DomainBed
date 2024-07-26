@@ -2309,9 +2309,7 @@ class ADRMX(Algorithm):
                 list(self.classifier_domain.parameters())),
             lr=self.hparams["lr"],
             betas=(self.hparams['beta1'], 0.9))
-
-
-                                   
+                         
                                    
     def update(self, minibatches, unlabeled=None):
 
