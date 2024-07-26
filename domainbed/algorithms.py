@@ -2266,14 +2266,12 @@ class ADRMX(Algorithm):
                                    hparams)
         self.register_buffer('update_count', torch.tensor([0]))
 
-
         self.num_classes = num_classes
         self.num_domains = num_domains
         self.mix_num = 1
         self.scl_int = SupConLossLambda(lamda=0.5)
         self.scl_final = SupConLossLambda(lamda=0.5)
 
-        
         self.featurizer_label = networks.Featurizer(input_shape, self.hparams)
         self.featurizer_domain = networks.Featurizer(input_shape, self.hparams)
 
