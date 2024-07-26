@@ -565,6 +565,7 @@ class LARS(torch.optim.Optimizer):
                 mu.mul_(g['momentum']).add_(dp)
                 p.add_(mu, alpha=-g['lr'])
 
+
 ############################################################
 # Supervised Contrastive Loss implementation from:
 # https://arxiv.org/abs/2004.11362
@@ -583,7 +584,8 @@ class SupConLossLambda(torch.nn.Module):
         loss = 0
         nans = 0
         for i, (label, domain_label) in enumerate(zip(labels, domain_labels)):
-            # take the positive and negative samples wrt in/out domain
+
+            # take the positive and negative samples wrt in/out domain            
             cond_pos_in_domain = torch.logical_and(labels==label, domain_labels == domain_label) # take all positives
             cond_pos_in_domain[i] = False # exclude itself
             cond_pos_out_domain = torch.logical_and(labels==label, domain_labels != domain_label)
@@ -599,6 +601,7 @@ class SupConLossLambda(torch.nn.Module):
             # calculate nominator and denominator wrt lambda scaling
             scaled_exp_term = torch.cat((self.lamda * torch.exp(pos_feats_in_domain[:, i]), (1 - self.lamda) * torch.exp(pos_feats_out_domain[:, i])))
             scaled_denom_const = torch.sum(torch.cat((self.lamda * torch.exp(neg_feats_in_domain[:, i]), (1 - self.lamda) * torch.exp(neg_feats_out_domain[:, i]), scaled_exp_term))) + 1e-5
+
 
             # nof positive samples
             num_positives = pos_feats_in_domain.shape[0] + pos_feats_out_domain.shape[0] # total positive samples

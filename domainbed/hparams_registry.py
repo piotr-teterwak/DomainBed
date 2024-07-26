@@ -172,6 +172,7 @@ def _hparams(algorithm, dataset, random_seed):
     elif algorithm == 'ERMPlusPlus':
         _hparam('linear_lr', 5e-5, lambda r: 10**r.uniform(-5, -3.5))
 
+
     if algorithm == "ADRMX":
         _hparam('cnt_lambda', 1.0, lambda r: r.choice([1.0]))
         _hparam('dclf_lambda', 1.0, lambda r: r.choice([1.0]))
