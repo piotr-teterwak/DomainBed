@@ -5,6 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.autograd as autograd
 
+import copy
 import numpy as np
 from collections import OrderedDict
 try:
